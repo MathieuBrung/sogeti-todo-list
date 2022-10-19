@@ -1,0 +1,65 @@
+:root {
+    --bg-color: #4f4f4f;
+    --txt-color: darkgrey;
+
+    --boxShadow-color-light: #676767;
+    --boxShadow-color-dark: #373737;
+
+    --border-radius: 4px;
+
+    --font: Inter, Avenir, Helvetica, Arial, sans-serif;
+    --input-font-size: 0.85rem;
+    --font-size: 16px;
+    --font-weight: 400;
+    --line-height: 24px;
+
+
+    background-color: var(--bg-color);
+
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    font-family: var(--font);
+    line-height: var(--line-height);
+
+    color-scheme: light dark;
+    color: var(--txt-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    color: var(--txt-color);
+    font-family: var(--font);
+    font-size: var(--input-font-size);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight);
+}
+
+textarea {
+    color: var(--txt-color);
+    font-family: var(--font);
+    font-size: var(--input-font-size);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight);
+}

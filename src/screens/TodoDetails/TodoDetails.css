@@ -1,0 +1,37 @@
+#detailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#detailsInputsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 14px;
+}
+
+#detailsButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#detailsTitle {
+    width: 90%;
+}
+
+#detailsDescription {
+    width: 90%;
+    height: 70%;
+}
+
+#detailsButtonsContainer .button {
+    width: 30%;
+}
