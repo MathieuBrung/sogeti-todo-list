@@ -20,7 +20,7 @@ const TodoItem = ({ todo }) => {
                 <p>{todo.title}</p>
             </div>
             <div className='rightContainer'>
-                <Link to={`/tasks/${todo.id}`}>🔎</Link>
+                <Link to={`/sogeti-todo-list/tasks/${todo.id}`}>🔎</Link>
                 <input type='checkbox' checked={check} onChange={() => onToggle()} />
             </div>
         </div>

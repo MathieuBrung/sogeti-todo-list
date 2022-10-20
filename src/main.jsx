@@ -10,12 +10,12 @@ import TodoDetails from './screens/TodoDetails/TodoDetails';
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/sogeti-todo-list/",
         element: <App />,
         errorElement: <ErrorPage />,
     },
     {
-        path: "tasks/:taskId",
+        path: "/sogeti-todo-list/tasks/:taskId",
         element: <TodoDetails />,
     }
 ]);
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <Provider store={store}>
-            <RouterProvider router={router} basename='/sogeti-todo-list' />
+            <RouterProvider router={router} />
         </Provider>
     </React.StrictMode>
 )

@@ -1,44 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { db } from '../../db/db';
 
-let id = 1;
+let hardCodedId = 1;
 
-let initialState = [
+let hardCodedState = [
     {
         id: 0,
-        title: 'Get my bachelor degree',
+        title: '🎓 Get my bachelor degree',
         description: 'Bachelor degree in web and mobile development',
         completed: true
     },
     {
         id: 1,
-        title: 'Get a job',
+        title: '💼 Get a job',
         description: 'Get a job in a nice company, in a nice project',
         completed: false
     }
 ]
 
-db.tasks?.toArray()
-    .then(tasks => {
-        tasks?.map(task => {
-            if (task.id > id) {
-                initialState = [...initialState, task];
-            }
-        })
-    })
-    .catch(e => console.log('Error : ', e));
+let initialState = [];
+let id = hardCodedId;
 
+const storageTasks = JSON.parse(localStorage.getItem('tasks'));
 
-db.tasks?.orderBy('id').delete();
-
-initialState.forEach(todo => {
-    db.tasks?.add({
-        id: todo?.id,
-        title: todo?.title,
-        description: todo?.description,
-        completed: todo?.completed
+if (storageTasks) {
+    storageTasks.map(task => {
+        initialState = [...initialState, task];
+        if (task.id > id) {
+            id = task.id;
+        }
     });
-});
+} else {
+    initialState = [...hardCodedState];
+}
 
 export const todosSlice = createSlice({
     name: 'todos',

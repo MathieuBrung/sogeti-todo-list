@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoList from './components/TodoList/TodoList';
-import { db } from './db/db';
 import { addTodo, clearCompletedTasks, deleteAllTodo } from './reducer/reducers/todosReducer';
 import Header from './components/Header/Header';
 
@@ -20,15 +19,14 @@ function App() {
     const [CSSClassBtn3, setCSSClassBtn3] = useState('button neumorphism');
 
 
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(todos));
+    }, [getTodos])
+
     const handleAddTodo = () => {
         if (todoTitle === '') return;
 
         dispatch(addTodo({ title: todoTitle, description: todoDescription }));
-        db.tasks.add({
-            title: todoTitle,
-            description: todoDescription,
-            completed: false
-        });
 
         setTodoTitle('');
         setTodoDescription('');
@@ -38,15 +36,10 @@ function App() {
     const handleDeleteAllTodos = () => {
         if (!window.confirm('Are you sure you want to delete all tasks?')) return;
         dispatch(deleteAllTodo());
-        db.tasks.orderBy('id').delete();
     }
 
     const handleClearCompletedTasks = () => {
         dispatch(clearCompletedTasks());
-        const completedTodos = todos.filter(todo => todo.completed === true);
-        completedTodos.map(todo => {
-            db.tasks.where('id').equals(todo.id).delete();
-        })
     }
 
     const handleCSSClass = (bool, btn) => {
@@ -90,9 +83,9 @@ function App() {
                             </>
                             :
                             <>
-                                <span>➕</span>
+                                <span>✍</span>
                                 <span>Add a task</span>
-                                <span>➕</span>
+                                <span>✍</span>
                             </>
                     }
                 </div>
